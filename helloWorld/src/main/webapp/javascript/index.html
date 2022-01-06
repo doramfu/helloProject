@@ -1,53 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>javascript/index.html</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="calendar.js"></script> -->
     <style>
-        #tbl>thead>tr {
-            background-color: violet;
-        }
-        #tbl > tbody > tr:nth-child(2n) {
+        div:not(#show) {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
             background-color: yellow;
-        }
-        #tbl > tbody > tr:nth-child(2n+1) {
-            background-color: skyblue;
-        }
-        span:not(:empty) {
-            display: inline-block;
-            padding: 3px;
-            border: 1px solid grey;
-            margin: 5px;
-            width: 40px;
+            border: 1px solid gray;
+            font-size: 30px;
             text-align: center;
-        }
-        span:empty {
-            display: inline-block;
-            padding: 3px;
-            margin: 5px 6px;
-            width: 40px;
-        }
-        .sunday {
-            background-color: red;
-            color: white;
+            line-height: 100px;
+            color: yellow;
         }
     </style>
-    <script>
-        console.log('hello,world!')
-        document.write('<h3>hello,world</h3>')
-        // window.alert('hello,world');
-    </script>
-    <script src='calendar.js'></script>
 </head>
+
 <body>
     <div id="show"></div>
-    <script src='string1.js'></script>
-    <script>
-        document.querySelector('h3').innerHTML = 'Nice.World';
-        document.querySelector('h3').style.background = 'yellow';
-        </script>
+    <input type="text" id="sname"><button id="delBtn">조회삭제</button>
+    <p>hello</p>
+    <!-- button : element, id: attribute, textnode -->
+    <ul>
+        <li>김은서</li>
+        <li>황보경</li>
+        <li>고권영</li>
+        <li>류기태</li>
+        <li>구자현</li>
+    </ul>
+    <script src="dom1.js"></script>
     
+
 </body>
+
 </html>
