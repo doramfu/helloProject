@@ -9,34 +9,92 @@
     <link rel="stylesheet" href="style.css">
     <!-- <script src="calendar.js"></script> -->
     <style>
-        div:not(#show) {
+        #add {
+            border: 1px solid grey;
+            width: 70%;
+            float: left;
+            margin: 5px;
+            padding: 10px;
+        }
+
+        #btn {
+            /* border: 1px solid grey; */
+            width: 20%;
+            float: left;
+            margin: 5px;
+            height: 140px;
+        }
+
+        .row {
+            margin: 5px 10px;
+        }
+
+        .row>input {
             display: inline-block;
+            width: 75%;
+        }
+
+        .row>label {
+            display: inline-block;
+            width: 14%;
+        }
+
+        #btn>button {
+            margin-top: 20px;
             width: 100px;
-            height: 100px;
-            background-color: yellow;
-            border: 1px solid gray;
-            font-size: 30px;
+        }
+
+        #list {
+            border: 1px solid grey;
+            float: left;
+            width: 92%;
+            height: 300px;
+            margin-left: 5px;
+        }
+
+        #list table {
+            width: 97%;
+            margin: 10px auto;
+        }
+
+        th,
+        td {
+            padding: 3px 5px;
             text-align: center;
-            line-height: 100px;
-            color: yellow;
         }
     </style>
 </head>
 
-<body>
-    <div id="show"></div>
-    <input type="text" id="sname"><button id="delBtn">조회삭제</button>
-    <p>hello</p>
-    <!-- button : element, id: attribute, textnode -->
-    <ul>
-        <li>김은서</li>
-        <li>황보경</li>
-        <li>고권영</li>
-        <li>류기태</li>
-        <li>구자현</li>
-    </ul>
-    <script src="dom1.js"></script>
-    
+<body id="bdy">
+
+    <div id="show">
+        <div id="add">
+            <div class="row">
+                <label for="">이름</label>
+                <input type="text" name="name">
+            </div>
+            <div class="row">
+                <label for="">연락처</label>
+                <input type="text" name="phone">
+            </div>
+            <div class="row">
+                <label for="">주소</label>
+                <input type="text" name="addr">
+            </div>
+            <div class="row">
+                <label for="">이메일</label>
+                <input type="text" name="email">
+            </div>
+        </div>
+        <div id="btn">
+            <button>등록</button>
+            <button>선택삭제</button>
+        </div>
+        <div id="list"></div>
+    </div>
+
+    <script src="dom5.js"></script>
+
 
 </body>
 
