@@ -7,7 +7,23 @@ import java.util.List;
 import com.edu.common.DAO;
 
 public class EmpDAO extends DAO {
-	//삭제
+
+	public boolean deleteEmployee(String empId) throws SQLException {
+		String sql = "DELETE FROM emp_temp WHERE employee_id=?";
+		connect();
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, empId);
+
+		int r = pstmt.executeUpdate(); //처리된 건수를 반환
+		if (r > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	// 삭제
 	public void deleteEmp(int employeeId) {
 		String sql = "DELETE emp_temp WHERE employee_id = ?";
 		connect();
@@ -22,8 +38,8 @@ public class EmpDAO extends DAO {
 			disconnect();
 		}
 	}
-	
-	//수정
+
+	// 수정
 	public void updateEmp(EmployeeVO vo) {
 		String sql = "UPDATE emp_temp SET salary = ?, job_id = ?,email = ? WHERE employee_id=?";
 		connect();
@@ -41,6 +57,30 @@ public class EmpDAO extends DAO {
 			disconnect();
 		}
 	}
+
+	public void insertEmployee(EmployeeVO vo) {
+		String sql = "INSERT INTO emp_temp(employee_id,first_name,last_name,salary,"
+				+ "email,hire_date,job_id) values(?,?,?,?,?,?,?)";
+		connect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getEmployeeId());
+			pstmt.setString(2, vo.getFirstName());
+			pstmt.setString(3, vo.getLastName());
+			pstmt.setInt(4, vo.getSalary());
+			pstmt.setString(5, vo.getEmail());
+			pstmt.setString(6, vo.getHireDate());
+			pstmt.setString(7, "IT_PROG");
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "건 입력됨.");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+
 	// 한건 입력
 	public void insertEmp(EmployeeVO vo) {
 		String sql = "INSERT INTO emp_temp(employee_id,first_name,last_name,email,job_id,salary,hire_date) "
@@ -77,7 +117,7 @@ public class EmpDAO extends DAO {
 				emp.setFirstName(rs.getString("first_name"));
 				emp.setLastName(rs.getString("last_name"));
 				emp.setEmail(rs.getString("email"));
-				emp.setHireDate(rs.getString("hire_date"));
+				emp.setHireDate(rs.getString("hire_date").substring(0, 10));
 				emp.setJobId(rs.getString("job_id"));
 				emp.setSalary(rs.getInt("salary"));
 				empList.add(emp);
